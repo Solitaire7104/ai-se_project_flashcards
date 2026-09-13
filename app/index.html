@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flash Cards</title>
+    <meta name="author" content="Your Name" />
+    <meta name="description" content="A flash card application for studying" />
+    <meta name="keywords" content="study aids, flashcars, learning materials" />
+    <link rel="icon" href="favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="./assets/vendor/normalize.css" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="page">
+      <header class="header">
+        <h1 class="header__title">
+          <a href="#home" class="header__link">Flash Cards</a>
+        </h1>
+        <nav class="nav">
+          <ul class="nav__links">
+            <li><a href="#home" class="nav__link">My Decks</a></li>
+            <li><a href="#about" class="nav__link">About</a></li>
+          </ul>
+        </nav>
+      </header>
+
+      <main class="page__main-content">
+        <section class="decks" id="home-view">
+          <h2 class="decks__title">My Decks</h2>
+          <ul class="decks__list">
+            <li>
+              <button class="decks__new-btn">+ New Deck</button>
+            </li>
+          </ul>
+        </section>
+
+        <template id="deck-template">
+          <li class="deck deck_color_green">
+            <a href="#" class="deck__link"></a>
+            <h3 class="deck__title"></h3>
+            <div class="deck__row">
+              <span class="deck__count"></span>
+              <button class="deck__delete-btn" type="button"></button>
+            </div>
+          </li>
+        </template>
+
+        <section class="carousel" id="carousel-view" hidden>
+          <h2 class="carousel__title">
+            <span class="carousel__title-deck"></span>
+            <span class="carousel__title-count"></span>
+          </h2>
+          <div class="carousel__row">
+            <button
+              class="carousel__btn carousel__btn_type_left"
+              type="button"
+            ></button>
+            <div class="carousel__card">
+              <p class="carousel__card-text"></p>
+            </div>
+            <button
+              class="carousel__btn carousel__btn_type_right"
+              type="button"
+            ></button>
+          </div>
+          <button
+            class="carousel__btn carousel__btn_type_flip"
+            type="button"
+            aria-label="flip card"
+          ></button>
+        </section>
+
+        <section class="not-found" id="not-found-view" hidden>
+          <h2 class="not-found__title">404</h2>
+          <p class="not-found__message">Page not found</p>
+          <a href="#home" class="not-found__link">Back to home</a>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <p class="footer__text">&copy; 2024 Flash Cards App</p>
+      </footer>
+      <script src="./assets/js/index.js" type="module"></script>
+    </div>
+  </body>
+</html>
