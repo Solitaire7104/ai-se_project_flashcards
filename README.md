@@ -11,3 +11,7 @@
 
 # 3 The responsive design
 - Updated the layout to be responsive, ensuring compatibility across desktop, tablet, and mobile devices.
+
+# Project Pitch Video
+ Check out [this video] https://drive.google.com/file/d/151MIBzbRsAtjrTN05rMJ-USVas_aD0Lo/view?usp=drive_link , where I describe my 
+ project and some challenges I faced while building it.
