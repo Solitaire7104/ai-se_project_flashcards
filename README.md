@@ -2,6 +2,7 @@
 "Recent updates include an open deck view that lets users explore each deck in a larger, more detailed layout, a confirmation modal to help prevent accidental actions and improve user feedback, and a responsive design that ensures the project works smoothly across desktop, tablet, and mobile devices."
 
 # 1 The Open Deck View 
+- Open Deck has now been build
 - Open deck view so users can explore each deck more easily.
 - Added an open deck view for a more detailed and user-friendly browsing experience.
 
@@ -11,6 +12,13 @@
 
 # 3 The responsive design
 - Updated the layout to be responsive, ensuring compatibility across desktop, tablet, and mobile devices.
+- Deck cards has now been stack or resize correctly.
+- Text is readable
+- Buttons are usable
+- No horizontal overflow
+- Layout matches the design at small screen sizes
+- Responsive CSS Added
+
 
 # Project Pitch Video
  Check out [this video] https://drive.google.com/file/d/151MIBzbRsAtjrTN05rMJ-USVas_aD0Lo/view?usp=drive_link , where I describe my 
