@@ -1,0 +1,159 @@
+.gallery__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+}
+
+.gallery__title {
+  margin: 0;
+  font-weight: 700;
+  font-size: 40px;
+  margin-bottom: 40px;
+}
+
+@media (max-width: 900px) {
+  .gallery__list {
+    justify-content: center;
+  }
+
+  .gallery__header {
+    flex-wrap: wrap;
+  }
+}
+
+.gallery__new-card-btn {
+  width: 325px;
+  height: 205px;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 1.2;
+  color: #1a1a1a80;
+  border-radius: 20px;
+  background-color: #d9d9d9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  border: none;
+  cursor: pointer;
+}
+
+.gallery__count {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.2;
+}
+
+.gallery__new-card-btn:hover {
+  background-color: #c5c5c5;
+}
+
+/* Alias for legacy/new naming */
+.gallery__new-deck-btn {
+  width: 325px;
+  height: 205px;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 1.2;
+  color: #1a1a1a80;
+  border-radius: 20px;
+  background-color: #d9d9d9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  border: none;
+  cursor: pointer;
+}
+
+@media (max-width: 600px) {
+  .gallery__title {
+    font-size: 28px;
+    margin-bottom: 20px;
+  }
+
+  .gallery__practice-btn,
+  .gallery__back-btn,
+  .gallery__new-card-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 52px;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.2;
+    border-radius: 16px;
+    background-color: #d9d9d9;
+    box-shadow: 0 8px 24px rgba(26, 26, 26, 0.14);
+  }
+
+  .gallery__new-card-btn {
+    position: fixed;
+    bottom: 72px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(100%, 325px);
+    z-index: 20;
+  }
+
+  .gallery__header {
+    align-items: center;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .gallery__practice-btn {
+    margin-left: auto;
+  }
+
+  .wrapping-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .gallery__new-card-btn_location_deck-view {
+    position: static;
+    bottom: auto;
+    left: auto;
+    transform: none;
+    width: 100%;
+    margin-top: 16px;
+  }
+}
+
+.gallery__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.gallery__back-btn,
+.gallery__practice-btn {
+  font-weight: 700;
+  font-size: 16px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: none;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.gallery__back-btn:hover,
+.gallery__practice-btn:hover {
+  background-color: #f3f3f3;
+}
+
+.wrapping-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.wrapping-row__display-contents {
+  display: contents;
+}

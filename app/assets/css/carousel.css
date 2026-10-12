@@ -1,0 +1,192 @@
+.carousel {
+  padding-top: 106px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.carousel__card {
+  background-color: #64d583;
+  border-radius: 20px;
+  width: 440px;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  box-shadow:
+    0px 2px 8px 0px #0000001a,
+    -1px 2px 2px 0px #ffffffb2 inset,
+    1px -1px 2px 0px #00000040 inset;
+}
+
+.carousel__card_color_green {
+  background-color: #64d583;
+}
+
+.carousel__card_color_blue {
+  background-color: #91a8f9;
+}
+
+.carousel__card_color_pink {
+  background-color: #ee92d7;
+}
+
+.carousel__card_color_purple {
+  background-color: #aa8ef0;
+}
+
+.carousel__card_color_orange {
+  background-color: #ee955e;
+}
+
+.carousel__card_color_yellow {
+  background-color: #f5d770;
+}
+
+.carousel__card_color_gray {
+  background-color: #d9d9d9;
+}
+
+.carousel__card_color_white {
+  background-color: #ffffff;
+}
+
+.carousel__title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 32px;
+}
+
+.carousel__title-deck {
+  font-weight: 700;
+  font-size: 32px;
+  color: #1a1a1a;
+}
+
+.carousel__title-count {
+  font-weight: 500;
+  font-size: 14px;
+  color: #1a1a1a80;
+}
+
+.carousel__btn {
+  background-color: #fff;
+  opacity: 50%;
+  width: 44px;
+  height: 44px;
+  border: none;
+  border-radius: 8px;
+  box-shadow:
+    0px 2px 8px 0px #0000001a,
+    -1px 2px 2px 0px #ffffffb2 inset,
+    1px -1px 2px 0px #00000040 inset;
+}
+
+.carousel__btn:hover {
+  opacity: 100%;
+}
+
+.carousel__btn_type_left::before {
+  background-image: url(../images/left.svg);
+  height: 100%;
+  width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: block;
+  content: "";
+}
+
+.carousel__btn_type_right::before {
+  background-image: url(../images/right.svg);
+  height: 100%;
+  width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: block;
+  content: "";
+}
+
+.carousel__btn_type_flip::before {
+  background-image: url(../images/flip.svg);
+  height: 100%;
+  width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: block;
+  content: "";
+}
+
+.carousel__card-text {
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.carousel__grid {
+  display: grid;
+  grid-template-columns: 44px minmax(0, 440px) 44px;
+  grid-template-areas:
+    "left card right"
+    ". flip .";
+  align-items: center;
+  justify-content: center;
+  column-gap: 20px;
+  row-gap: 24px;
+  margin-bottom: 24px;
+}
+
+.carousel__btn_type_left {
+  grid-area: left;
+  justify-self: end;
+}
+
+.carousel__btn_type_right {
+  grid-area: right;
+  justify-self: start;
+}
+
+.carousel__btn_type_flip {
+  grid-area: flip;
+  justify-self: center;
+}
+
+.carousel__card {
+  grid-area: card;
+}
+
+@media (max-width: 760px) {
+  .carousel {
+    padding-top: 24px;
+  }
+
+  .carousel__title {
+    margin-bottom: 20px;
+  }
+
+  .carousel__grid {
+    grid-template-columns: 44px minmax(0, 1fr) 44px;
+    grid-template-areas:
+      "left card right"
+      "flip flip flip";
+    width: min(100%, 440px);
+    margin: 0 auto 24px;
+  }
+
+  .carousel__card {
+    width: 100%;
+    max-width: 100%;
+    min-height: 240px;
+    height: auto;
+    aspect-ratio: 1.47;
+  }
+
+  .carousel__btn_type_flip {
+    width: 100%;
+    max-width: 120px;
+  }
+}

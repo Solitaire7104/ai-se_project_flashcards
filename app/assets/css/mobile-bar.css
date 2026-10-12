@@ -1,0 +1,84 @@
+.page {
+  position: relative;
+}
+
+@media (max-width: 600px) {
+  .page {
+    padding-bottom: 0;
+  }
+
+  .page::after {
+    content: "";
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 200px;
+    background: linear-gradient(
+      180deg,
+      rgba(236, 236, 236, 0) 0%,
+      rgba(236, 236, 236, 0.72) 35%,
+      rgba(236, 236, 236, 1) 100%
+    );
+    z-index: 10;
+    pointer-events: none;
+  }
+
+  .page_no-mobile-bar::after {
+    display: none;
+  }
+
+  .page_no-mobile-bar .footer {
+    position: static;
+  }
+
+  .gallery__new-deck-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    bottom: 72px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(100%, 325px);
+    height: 52px;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.2;
+    border-radius: 16px;
+    background-color: #d9d9d9;
+    box-shadow: 0 8px 24px rgba(26, 26, 26, 0.14);
+    z-index: 20;
+  }
+
+  .gallery__new-card-btn_location_deck-view {
+    position: static;
+    bottom: auto;
+    left: auto;
+    transform: none;
+    width: 100%;
+  }
+
+  .footer {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 30;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 52px;
+    pointer-events: none;
+  }
+
+  .footer__text {
+    margin: 0;
+    font-size: 14px;
+    letter-spacing: -0.14px;
+  }
+
+  .card__delete-btn {
+    z-index: 1;
+  }
+}

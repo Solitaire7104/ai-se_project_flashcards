@@ -1,61 +1,88 @@
 import { decks, getDeckByID } from "./decks.js";
 import { hexToString, removeColorClasses } from "./colors.js";
 import { renderCarouselView } from "./carousel.js";
+import { renderDeckView } from "./deck-view.js";
 
-// Select the template and deck list
-const deckTemplate = document.querySelector("#deck-template");
-const deckList = document.querySelector(".decks__list");
+// Select the template and gallery list
+const cardTemplate = document.querySelector("#card-template");
+const galleryList = document.querySelector(".gallery__list");
+
+// Track the currently selected deck to avoid duplicate listeners
+let currentDeck = null;
+
+// Practice button - set once globally to avoid memory leaks
+const practiceBtn = document.querySelector(".gallery__practice-btn");
+if (practiceBtn) {
+  practiceBtn.addEventListener("click", () => {
+    if (!currentDeck) return;
+    window.location.hash = `carousel/${currentDeck.id}`;
+  });
+}
 
 // Select views for routing
 const homeView = document.querySelector("#home-view");
+const deckView = document.querySelector("#deck-view");
 const carouselView = document.querySelector("#carousel-view");
 const notFoundView = document.querySelector("#not-found-view");
 const mainContent = document.querySelector(".page__main-content");
+const page = document.querySelector(".page");
+
+function setMobileBarState(isHidden) {
+  if (!page) return;
+  page.classList.toggle("page_no-mobile-bar", isHidden);
+}
 /**
  * Creates a deck element by cloning the template and customizing it
  * @param {Object} item - The deck object containing name, cards, and color
  * @returns {HTMLElement} - The customized deck element
  */
-function createDeckEl(item) {
-  const deckEl = deckTemplate.content.cloneNode(true);
-  const deckTitle = deckEl.querySelector(".deck__title");
-  const deckCount = deckEl.querySelector(".deck__count");
-  const deckItem = deckEl.querySelector(".deck");
-  const deckLink = deckEl.querySelector(".deck__link");
-  const deleteBtn = deckEl.querySelector(".deck__delete-btn");
+function createCardEl(item) {
+  const cardEl = cardTemplate.content.cloneNode(true);
+  const cardTitle = cardEl.querySelector(".card__title");
+  const cardCount = cardEl.querySelector(".card__count");
+  const cardItem = cardEl.querySelector(".card");
+  const cardLink = cardEl.querySelector(".card__link");
+  const deleteBtn = cardEl.querySelector(".card__delete-btn");
 
-  // Set the deck link href
-  deckLink.href = `#carousel/${item.id}`;
+  // Set the card link href and click behavior to open deck view
+  if (cardLink) {
+    cardLink.href = `#deck/${item.id}`;
+    cardLink.addEventListener("click", (e) => {
+      e.preventDefault();
+      currentDeck = item;
+      window.location.hash = `deck/${item.id}`;
+    });
+  }
 
-  // Set the deck title
-  deckTitle.textContent = item.name;
+  // Set the card title
+  cardTitle.textContent = item.name;
 
-  // Set the deck count
-  deckCount.textContent = `${item.cards.length} cards`;
+  // Set the card count
+  cardCount.textContent = `${item.cards.length} cards`;
   deleteBtn.addEventListener("click", (e) => {
     e.preventDefault();
-    // remove any color modifiers then remove the deck element from the DOM
-    removeColorClasses(deckItem);
-    deckItem.remove();
+    // remove any color modifiers then remove the card element from the DOM
+    removeColorClasses(cardItem);
+    cardItem.remove();
   });
 
   // Add the color class
   const colorName = hexToString(item.color);
   if (colorName) {
-    removeColorClasses(deckItem);
-    deckItem.classList.add(`deck_color_${colorName}`);
+    removeColorClasses(cardItem);
+    cardItem.classList.add(`card_color_${colorName}`);
   }
 
-  return deckEl;
+  return cardEl;
 }
 
 /**
  * Renders a deck element by creating it and prepending it to the deck list
  * @param {Object} item - The deck object
  */
-function renderDeckEl(item) {
-  const deckEl = createDeckEl(item);
-  deckList.prepend(deckEl);
+function renderCardEl(item) {
+  const cardEl = createCardEl(item);
+  galleryList.prepend(cardEl);
 }
 
 /**
@@ -64,35 +91,51 @@ function renderDeckEl(item) {
 function router() {
   const hash = window.location.hash.slice(1) || "home";
 
-  // Hide all views (use `.hidden` consistently)
-  homeView.hidden = true;
-  carouselView.hidden = true;
-  notFoundView.hidden = true;
+  // Hide all views before showing only the active one
+  if (homeView) homeView.hidden = true;
+  if (deckView) deckView.hidden = true;
+  if (carouselView) carouselView.hidden = true;
+  if (notFoundView) notFoundView.hidden = true;
+
   // Remove carousel modifier from main content
-  mainContent.classList.remove("page__main-content_location_carousel");
+  if (mainContent) {
+    mainContent.classList.remove("page__main-content_location_carousel");
+  }
+  setMobileBarState(false);
 
   // Show the appropriate view
   if (hash === "home") {
-    homeView.hidden = false;
+    if (homeView) homeView.hidden = false;
   } else if (hash.startsWith("carousel/")) {
-    // Extract the deck ID from the URL
+    setMobileBarState(true);
     const deckId = hash.split("/")[1];
-    // Get the deck by ID
     const deck = getDeckByID(deckId);
     if (deck) {
-      // Render the carousel view with the deck
       renderCarouselView(deck);
-      carouselView.hidden = false;
+      if (carouselView) carouselView.hidden = false;
     } else {
-      notFoundView.hidden = false;
+      setMobileBarState(true);
+      if (notFoundView) notFoundView.hidden = false;
+    }
+  } else if (hash.startsWith("deck/")) {
+    const deckId = hash.split("/")[1];
+    const deck = getDeckByID(deckId);
+    if (deck) {
+      currentDeck = deck;
+      renderDeckView(deck);
+      if (deckView) deckView.hidden = false;
+    } else {
+      setMobileBarState(true);
+      if (notFoundView) notFoundView.hidden = false;
     }
   } else {
-    notFoundView.hidden = false;
+    setMobileBarState(true);
+    if (notFoundView) notFoundView.hidden = false;
   }
 }
 
 // Render all decks from the array
-decks.forEach(renderDeckEl);
+decks.forEach(renderCardEl);
 
 // Set up hash routing
 window.addEventListener("hashchange", router);

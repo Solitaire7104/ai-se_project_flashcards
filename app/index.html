@@ -10,8 +10,7 @@
     <link rel="icon" href="favicon.ico" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="stylesheet" href="./assets/vendor/normalize.css" />
-    <link rel="stylesheet" href="./assets/css/style.css" />
+    <link rel="stylesheet" href="./assets/css/index.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap"
       rel="stylesheet"
@@ -32,22 +31,61 @@
       </header>
 
       <main class="page__main-content">
-        <section class="decks" id="home-view">
-          <h2 class="decks__title">My Decks</h2>
-          <ul class="decks__list">
+        <section class="gallery" id="home-view">
+          <h2 class="gallery__title">My Decks</h2>
+          <ul class="gallery__list">
             <li>
-              <button class="decks__new-btn">+ New Deck</button>
+              <button class="gallery__new-card-btn">+ New Deck</button>
             </li>
           </ul>
         </section>
 
-        <template id="deck-template">
-          <li class="deck deck_color_green">
-            <a href="#" class="deck__link"></a>
-            <h3 class="deck__title"></h3>
-            <div class="deck__row">
-              <span class="deck__count"></span>
-              <button class="deck__delete-btn" type="button"></button>
+        <section class="gallery" id="deck-view">
+          <div class="gallery__header">
+            <button type="button" class="gallery__back-btn">
+              Back to Decks
+            </button>
+            <h2 class="gallery__title"></h2>
+            <button type="button" class="gallery__practice-btn">
+              Practice
+            </button>
+          </div>
+          <div class="wrapping-row">
+            <ul class="gallery__list wrapping-row__display-contents"></ul>
+            <button
+              type="button"
+              class="gallery__new-deck-btn gallery__new-card-btn gallery__new-card-btn_location_deck-view"
+            >
+              + New Deck
+            </button>
+          </div>
+        </section>
+
+        <template id="card-template">
+          <li class="card card_color_green">
+            <a href="#" class="card__link"></a>
+            <h3 class="card__title"></h3>
+            <div class="card__row">
+              <span class="card__count"></span>
+              <button class="card__delete-btn" type="button"></button>
+            </div>
+          </li>
+        </template>
+
+        <template id="flashcard-template">
+          <li class="card card_color_green">
+            <h3 class="card__title"></h3>
+            <div class="card__row">
+              <button
+                type="button"
+                aria-label="Open deck"
+                class="card__open-btn"
+              ></button>
+              <button
+                type="button"
+                aria-label="Delete deck"
+                class="card__delete-btn"
+              ></button>
             </div>
           </li>
         </template>
@@ -57,7 +95,7 @@
             <span class="carousel__title-deck"></span>
             <span class="carousel__title-count"></span>
           </h2>
-          <div class="carousel__row">
+          <div class="carousel__grid">
             <button
               class="carousel__btn carousel__btn_type_left"
               type="button"
@@ -69,12 +107,12 @@
               class="carousel__btn carousel__btn_type_right"
               type="button"
             ></button>
+            <button
+              class="carousel__btn carousel__btn_type_flip"
+              type="button"
+              aria-label="flip card"
+            ></button>
           </div>
-          <button
-            class="carousel__btn carousel__btn_type_flip"
-            type="button"
-            aria-label="flip card"
-          ></button>
         </section>
 
         <section class="not-found" id="not-found-view" hidden>

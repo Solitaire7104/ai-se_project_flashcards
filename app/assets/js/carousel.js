@@ -15,6 +15,11 @@ function getCarouselTitleString(currentIndex, total) {
  * @param {Object} deck - The deck object to display
  */
 export function renderCarouselView(deck) {
+  const page = document.querySelector(".page");
+  if (page) {
+    page.classList.add("page_no-mobile-bar");
+  }
+
   const carouselView = document.querySelector("#carousel-view");
 
   const carouselTitleDeck = document.querySelector(".carousel__title-deck");

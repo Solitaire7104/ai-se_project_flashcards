@@ -1,0 +1,21 @@
+@import "../vendor/normalize.css";
+@import "./page.css";
+@import "./header.css";
+@import "./nav.css";
+@import "./gallery.css";
+@import "./card.css";
+@import "./mobile-bar.css";
+@import "./carousel.css";
+@import "./footer.css";
+
+h1,
+h2,
+h3 {
+  margin: 0;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
