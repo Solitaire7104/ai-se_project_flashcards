@@ -29,9 +29,9 @@
   font-weight: 700;
   font-size: 24px;
   line-height: 1.2;
-  color: #1a1a1a80;
+  color: #ffffff;
   border-radius: 20px;
-  background-color: #d9d9d9;
+  background-color: #1a1a1a;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -47,7 +47,7 @@
 }
 
 .gallery__new-card-btn:hover {
-  background-color: #c5c5c5;
+  background-color: #2d2d2d;
 }
 
 /* Alias for legacy/new naming */
@@ -57,9 +57,9 @@
   font-weight: 700;
   font-size: 24px;
   line-height: 1.2;
-  color: #1a1a1a80;
+  color: #ffffff;
   border-radius: 20px;
-  background-color: #d9d9d9;
+  background-color: #1a1a1a;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -75,8 +75,7 @@
   }
 
   .gallery__practice-btn,
-  .gallery__back-btn,
-  .gallery__new-card-btn {
+  .gallery__back-btn {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -90,6 +89,22 @@
     box-shadow: 0 8px 24px rgba(26, 26, 26, 0.14);
   }
 
+  .gallery__new-card-btn,
+  .gallery__new-deck-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 52px;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.2;
+    border-radius: 16px;
+    background-color: #1a1a1a;
+    color: #ffffff;
+    box-shadow: 0 8px 24px rgba(26, 26, 26, 0.14);
+  }
+
   .gallery__new-card-btn {
     position: fixed;
     bottom: 72px;
@@ -97,6 +112,17 @@
     transform: translateX(-50%);
     width: min(100%, 325px);
     z-index: 20;
+  }
+
+  .gallery__actions {
+    flex-direction: column;
+    align-items: stretch;
+    margin-top: 16px;
+  }
+
+  .gallery__practice-btn_location_deck-view,
+  .gallery__new-card-btn_location_deck-view {
+    width: 100%;
   }
 
   .gallery__header {
@@ -146,6 +172,31 @@
 .gallery__back-btn:hover,
 .gallery__practice-btn:hover {
   background-color: #f3f3f3;
+}
+
+.gallery__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.gallery__practice-btn_location_deck-view,
+.gallery__new-card-btn_location_deck-view {
+  width: 180px;
+  height: 52px;
+  font-size: 18px;
+  border-radius: 16px;
+}
+
+.gallery__practice-btn_location_deck-view {
+  background-color: #ffffff;
+  color: #1a1a1a;
+}
+
+.gallery__new-card-btn_location_deck-view {
+  background-color: #1a1a1a;
+  color: #ffffff;
 }
 
 .wrapping-row {
