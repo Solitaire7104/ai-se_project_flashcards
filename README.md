@@ -23,3 +23,6 @@
 # Project Pitch Video
  Check out [this video] https://drive.google.com/file/d/151MIBzbRsAtjrTN05rMJ-USVas_aD0Lo/view?usp=drive_link , where I describe my 
  project and some challenges I faced while building it.
+
+# Deployment Link
+https://solitaire7104.github.io/ai-se_project_flashcards/app/
