@@ -110,7 +110,8 @@
     bottom: 72px;
     left: 50%;
     transform: translateX(-50%);
-    width: min(100%, 325px);
+    width: 353px;
+    height: 44px;
     z-index: 20;
   }
 
@@ -206,5 +207,5 @@
 }
 
 .wrapping-row__display-contents {
-  display: contents;
+  /* display: contents; */
 }

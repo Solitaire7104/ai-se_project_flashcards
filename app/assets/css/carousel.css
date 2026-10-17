@@ -7,7 +7,7 @@
   max-width: 1400px;
   margin: 0 auto;
 }
-.carousel_[hidden] {
+.carousel[hidden] {
   display: none;
 }
 
