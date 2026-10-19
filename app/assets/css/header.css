@@ -27,8 +27,13 @@
 
 @media (max-width: 600px) {
   .header {
-    flex-direction: column;
-    align-items: flex-start;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav {
+    margin-left: auto;
   }
 
   .header__title,
@@ -37,6 +42,7 @@
   }
 
   .nav__links {
+    justify-content: flex-end;
     gap: 12px;
   }
 }

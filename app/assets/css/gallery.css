@@ -116,14 +116,23 @@
   }
 
   .gallery__actions {
-    flex-direction: column;
-    align-items: stretch;
-    margin-top: 16px;
+    position: fixed;
+    left: 50%;
+    bottom: 24px;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    width: min(calc(100% - 32px), 353px);
+    z-index: 35;
   }
 
   .gallery__practice-btn_location_deck-view,
   .gallery__new-card-btn_location_deck-view {
     width: 100%;
+    height: 52px;
+    margin: 0;
   }
 
   .gallery__header {
@@ -147,7 +156,7 @@
     left: auto;
     transform: none;
     width: 100%;
-    margin-top: 16px;
+    margin-top: 0;
   }
 }
 

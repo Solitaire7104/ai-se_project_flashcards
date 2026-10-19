@@ -41,7 +41,7 @@ export function renderDeckView(deck) {
     const deleteBtn = node.querySelector(".card__delete-btn");
     const listItem = node.querySelector(".card");
 
-    titleEl.textContent = card.front || card.text || `Card ${idx + 1}`;
+    titleEl.textContent = card.question || `Card ${idx + 1}`;
 
     openBtn.addEventListener("click", (e) => {
       e.preventDefault();
