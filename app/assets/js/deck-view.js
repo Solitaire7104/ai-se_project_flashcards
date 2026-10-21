@@ -41,12 +41,25 @@ export function renderDeckView(deck) {
     const deleteBtn = node.querySelector(".card__delete-btn");
     const listItem = node.querySelector(".card");
 
-    titleEl.textContent = card.question || `Card ${idx + 1}`;
+    const DeckColorName = hexToString(deck.color) || "Green";
+    let showingQuestion = true;
 
-    openBtn.addEventListener("click", (e) => {
-      e.preventDefault();
-      // Open the carousel for this deck (carousel shows first card by default)
-      window.location.hash = `carousel/${deck.id}`;
+    function renderSide() {
+      removeColorClasses(listItem);
+      if (showingQuestion) {
+        titleEl.textContent = card.question || `Card ${idx + 1}`;
+        listItem.classList.add(`card_color_${DeckColorName}`);
+      } else {
+        titleEl.textContent = card.answer;
+        listItem.classList.add("card_color_white");
+      }
+    }
+
+    renderSide();
+
+    openBtn.addEventListener("click", () => {
+      showingQuestion = !showingQuestion;
+      renderSide();
     });
 
     deleteBtn.addEventListener("click", (e) => {
