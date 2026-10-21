@@ -1,3 +1,5 @@
+import { hexToString, removeColorClasses } from "./colors.js";
+
 const deckView = document.querySelector("#deck-view");
 const flashcardTemplate = document.querySelector("#flashcard-template");
 const deckList = deckView.querySelector(".gallery__list");
@@ -32,7 +34,7 @@ export function renderDeckView(deck) {
 
   // Clear existing list
   deckList.innerHTML = "";
-
+  const DeckColorName = hexToString(deck.color) || "green";
   // Populate flashcards
   (deck.cards || []).forEach((card, idx) => {
     const node = flashcardTemplate.content.cloneNode(true);
@@ -41,7 +43,6 @@ export function renderDeckView(deck) {
     const deleteBtn = node.querySelector(".card__delete-btn");
     const listItem = node.querySelector(".card");
 
-    import { hexToString, removeColorClasses } from "./colors.js";
     let showingQuestion = true;
 
     function renderSide() {
