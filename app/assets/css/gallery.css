@@ -68,6 +68,13 @@
   cursor: pointer;
 }
 
+.gallery__actions {
+  display: none;
+  justify-content: flex-end;
+  gap: 16px;
+  margin-top: 24px;
+}
+
 @media (max-width: 600px) {
   .gallery__title {
     font-size: 28px;
@@ -128,6 +135,7 @@
     z-index: 35;
   }
 
+  .gallery__practice-btn_mobile,
   .gallery__practice-btn_location_deck-view,
   .gallery__new-card-btn_location_deck-view {
     width: 100%;
@@ -184,13 +192,7 @@
   background-color: #f3f3f3;
 }
 
-.gallery__actions {
-  display: flex;
-  justify-content: flex-end;
-  gap: 16px;
-  margin-top: 24px;
-}
-
+.gallery__practice-btn_mobile,
 .gallery__practice-btn_location_deck-view,
 .gallery__new-card-btn_location_deck-view {
   width: 180px;
@@ -199,6 +201,7 @@
   border-radius: 16px;
 }
 
+.gallery__practice-btn_mobile,
 .gallery__practice-btn_location_deck-view {
   background-color: #ffffff;
   color: #1a1a1a;

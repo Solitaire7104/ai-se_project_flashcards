@@ -10,14 +10,18 @@ const galleryList = document.querySelector(".gallery__list");
 // Track the currently selected deck to avoid duplicate listeners
 let currentDeck = null;
 
-// Practice button - set once globally to avoid memory leaks
-const practiceBtn = document.querySelector(".gallery__practice-btn");
-if (practiceBtn) {
-  practiceBtn.addEventListener("click", () => {
+// Practice button handlers - one for the desktop header button and one for the mobile action bar.
+const practiceButtons = [
+  document.querySelector("#deck-view .gallery__header .gallery__practice-btn"),
+  document.querySelector(".gallery__practice-btn_mobile"),
+].filter(Boolean);
+
+practiceButtons.forEach((button) => {
+  button.addEventListener("click", () => {
     if (!currentDeck) return;
     window.location.hash = `carousel/${currentDeck.id}`;
   });
-}
+});
 
 // Select views for routing
 const homeView = document.querySelector("#home-view");
