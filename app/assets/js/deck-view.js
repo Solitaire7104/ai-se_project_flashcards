@@ -41,7 +41,7 @@ export function renderDeckView(deck) {
     const deleteBtn = node.querySelector(".card__delete-btn");
     const listItem = node.querySelector(".card");
 
-    const DeckColorName = hexToString(deck.color) || "Green";
+    import { hexToString, removeColorClasses } from "./colors.js";
     let showingQuestion = true;
 
     function renderSide() {
