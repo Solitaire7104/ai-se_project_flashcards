@@ -31,7 +31,7 @@
       </header>
 
       <main class="page__main-content">
-        <section class="gallery" id="home-view">
+        <section class="gallery" id="home">
           <h2 class="gallery__title">My Decks</h2>
           <ul class="gallery__list">
             <li>
@@ -61,6 +61,70 @@
               + New Card
             </button>
           </div>
+        </section>
+
+        <section class="new-deck-view" id="new-deck-view" hidden>
+          <h2 class="new-deck-view__title">New Deck</h2>
+          <form class="new-deck-view__form" id="new-deck-form">
+            <fieldset class="new-deck-view__color-picker">
+              <legend class="new-deck-view__legend">Choose a deck color</legend>
+              <label class="new-deck-view__color-option">
+                <input type="radio" name="deck-color" value="green" checked />
+                <span
+                  class="new-deck-view__swatch new-deck-view__swatch_color_green"
+                  aria-hidden="true"
+                ></span>
+              </label>
+              <label class="new-deck-view__color-option">
+                <input type="radio" name="deck-color" value="blue" />
+                <span
+                  class="new-deck-view__swatch new-deck-view__swatch_color_blue"
+                  aria-hidden="true"
+                ></span>
+              </label>
+              <label class="new-deck-view__color-option">
+                <input type="radio" name="deck-color" value="pink" />
+                <span
+                  class="new-deck-view__swatch new-deck-view__swatch_color_pink"
+                  aria-hidden="true"
+                ></span>
+              </label>
+              <label class="new-deck-view__color-option">
+                <input type="radio" name="deck-color" value="purple" />
+                <span
+                  class="new-deck-view__swatch new-deck-view__swatch_color_purple"
+                  aria-hidden="true"
+                ></span>
+              </label>
+              <label class="new-deck-view__color-option">
+                <input type="radio" name="deck-color" value="orange" />
+                <span
+                  class="new-deck-view__swatch new-deck-view__swatch_color_orange"
+                  aria-hidden="true"
+                ></span>
+              </label>
+              <label class="new-deck-view__color-option">
+                <input type="radio" name="deck-color" value="yellow" />
+                <span
+                  class="new-deck-view__swatch new-deck-view__swatch_color_yellow"
+                  aria-hidden="true"
+                ></span>
+              </label>
+            </fieldset>
+
+            <label class="new-deck-view__field">
+              <span class="new-deck-view__label">Deck JSON</span>
+              <textarea
+                class="new-deck-view__textarea"
+                name="deck-json"
+                placeholder="Paste your deck JSON here..."
+              ></textarea>
+            </label>
+
+            <button type="submit" class="new-deck-view__submit" disabled>
+              Create Deck
+            </button>
+          </form>
         </section>
 
         <template id="card-template">

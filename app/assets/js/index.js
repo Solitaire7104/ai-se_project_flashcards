@@ -24,12 +24,21 @@ practiceButtons.forEach((button) => {
 });
 
 // Select views for routing
-const homeView = document.querySelector("#home-view");
+const homeView = document.querySelector("#home");
 const deckView = document.querySelector("#deck-view");
+const newDeckView = document.querySelector("#new-deck-view");
+const aboutView = document.querySelector("#about-view");
 const carouselView = document.querySelector("#carousel-view");
 const notFoundView = document.querySelector("#not-found-view");
 const mainContent = document.querySelector(".page__main-content");
 const page = document.querySelector(".page");
+
+const homeNewDeckBtn = document.querySelector("#home .gallery__new-card-btn");
+if (homeNewDeckBtn) {
+  homeNewDeckBtn.addEventListener("click", () => {
+    window.location.hash = "new-deck-view";
+  });
+}
 
 function setMobileBarState(isHidden) {
   if (!page) return;
@@ -98,6 +107,8 @@ function router() {
   // Hide all views before showing only the active one
   if (homeView) homeView.hidden = true;
   if (deckView) deckView.hidden = true;
+  if (newDeckView) newDeckView.hidden = true;
+  if (aboutView) aboutView.hidden = true;
   if (carouselView) carouselView.hidden = true;
   if (notFoundView) notFoundView.hidden = true;
 
@@ -110,6 +121,8 @@ function router() {
   // Show the appropriate view
   if (hash === "home") {
     if (homeView) homeView.hidden = false;
+  } else if (hash === "new-deck-view") {
+    if (newDeckView) newDeckView.hidden = false;
   } else if (hash.startsWith("carousel/")) {
     setMobileBarState(true);
     const deckId = hash.split("/")[1];
