@@ -2,6 +2,7 @@ import { decks, getDeckByID } from "./decks.js";
 import { hexToString, removeColorClasses } from "./colors.js";
 import { renderCarouselView } from "./carousel.js";
 import { renderDeckView } from "./deck-view.js";
+import { disableSubmitBtn } from "./new-deck-view.js";
 
 // Select the template and gallery list
 const cardTemplate = document.querySelector("#card-template");
@@ -122,6 +123,7 @@ function router() {
   if (hash === "home") {
     if (homeView) homeView.hidden = false;
   } else if (hash === "new-deck-view") {
+    disableSubmitBtn();
     if (newDeckView) newDeckView.hidden = false;
   } else if (hash.startsWith("carousel/")) {
     setMobileBarState(true);
