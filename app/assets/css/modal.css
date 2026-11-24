@@ -1,0 +1,64 @@
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background-color: rgba(26, 26, 26, 0.65);
+  box-sizing: border-box;
+}
+
+.modal_visible {
+  display: flex;
+}
+
+.modal__container {
+  position: relative;
+  width: min(420px, 100%);
+  min-height: 160px;
+  padding: 48px 24px 24px;
+  border-radius: 16px;
+  background-color: #ffffff;
+  box-sizing: border-box;
+  box-shadow: 0 16px 48px rgba(26, 26, 26, 0.24);
+}
+
+.modal__close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 50%;
+  background: #ececec;
+  cursor: pointer;
+}
+
+.modal__close::before,
+.modal__close::after {
+  content: "";
+  position: absolute;
+  top: 15px;
+  left: 8px;
+  width: 16px;
+  height: 2px;
+  background-color: #1a1a1a;
+}
+
+.modal__close::before {
+  transform: rotate(45deg);
+}
+
+.modal__close::after {
+  transform: rotate(-45deg);
+}
+
+.modal__error {
+  margin: 0;
+  color: #1a1a1a;
+  font-size: 18px;
+  line-height: 1.4;
+}

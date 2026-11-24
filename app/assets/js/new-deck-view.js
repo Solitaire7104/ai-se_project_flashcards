@@ -6,6 +6,13 @@ const HEX_DIGITS = /^[0-9a-fA-F]{6}$/;
 const form = document.querySelector("#new-deck-form");
 const submitBtn = form.querySelector(".new-deck-view__submit");
 const textarea = form.querySelector(".new-deck-view__textarea");
+const errorModal = document.querySelector("#error-modal");
+const errorModalCloseBtn = errorModal?.querySelector(".modal__close");
+const errorMessage = errorModal?.querySelector(".modal__error");
+
+errorModalCloseBtn?.addEventListener("click", () => {
+    errorModal.classList.remove("modal_visible");
+});
 
 export function disableSubmitBtn() {
     submitBtn.disabled = false;
@@ -42,16 +49,63 @@ if (!HEX_DIGITS.test(hex)) return "#64d583";
 return "#" + hex.toLowerCase();
 }
 
+function validateName(name) {
+    if (typeof name !== "string" || name.length < 2 || name.length > 80) {
+        return null;
+    }
+    return name;
+}
+
+function parseJSON(jsonString) {
+    try {
+        return JSON.parse(jsonString);
+    } catch (error) {
+        return null;
+    }
+}
+
+function showError(message) {
+    if (!errorModal || !errorMessage) return;
+    errorMessage.textContent = message;
+    errorModal.classList.add("modal_visible");
+}
+
 form.addEventListener("submit", (e) => {
     e.preventDefault();
 
     const formData = new FormData(form);
     const data = Object.fromEntries(formData);
-    const jsonData = JSON.parse(textarea.value);
-    const name = jsonData.name;
-    const color = normalizeColor(stringToHex(data["deck-color"]));
+    const jsonData = parseJSON(textarea.value);
+
+    if (jsonData === null) {
+        showError("Invalid JSON. Please check the JSON syntax and try again.");
+        return;
+    }
+
+    const name = validateName(jsonData.name);
+    if (name === null) {
+        showError("The deck name must be a string between 2 and 80 characters.");
+        return;
+    }
+
+    if (!Array.isArray(jsonData.cards)) {
+        showError("The cards field must be an array.");
+        return;
+    }
+
+    const colorValue = data["deck-color"];
+    if (typeof jsonData.color === "string") {
+        if (jsonData.color.toLowerCase() !== colorValue.toLowerCase()) {
+            showError("The JSON color does not match the color selected in the color picker.");
+            return;
+        }
+    }
+
+    const color = normalizeColor(stringToHex(colorValue));
     const id = slugify(`${name}-${Date.now()}`);
 
     decks.push({ id, color, name, cards: jsonData.cards });
     window.location.hash = "deck/" + id;
 });
+
+export { parseJSON, validateName, showError };
